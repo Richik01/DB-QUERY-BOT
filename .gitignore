@@ -1,0 +1,4 @@
+env
+./company.db
+./.env
+./src/__pycache__
