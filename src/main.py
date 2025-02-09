@@ -13,9 +13,11 @@ def main():
          flag += 1
     st.set_page_config(page_title="DB QUERY")
     st.title("DATABASE QUERY AI 🤖")
-    st.title("SAMPLE DATABASE IN USE: ")
-    r,c = get_result("SELECT * FROM Employees")
-    st.write(pd.DataFrame(r,columns=c))
+    table_name = st.selectbox("Select a table to view:", ["Employees", "Departments"])
+    r,c = get_result(f"SELECT * FROM {table_name}")
+    if st.button("Show Data") and table_name != None:
+        st.title(f"SAMPLE DATABASE {table_name} IN USE: ")
+        st.write(pd.DataFrame(r,columns=c))
     # User input for SQL query
     query = st.text_area("Enter SQL Query:", height=100)
 
