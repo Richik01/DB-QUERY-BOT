@@ -16,7 +16,7 @@ def main():
     table_name = st.selectbox("Select a table to view:", ["Employees", "Departments"])
     r,c = get_result(f"SELECT * FROM {table_name}")
     if st.button("Show Data") and table_name != None:
-        st.title(f"SAMPLE DATABASE {table_name} IN USE: ")
+        st.title(f"### SAMPLE DATABASE {table_name} IN USE: ")
         st.write(pd.DataFrame(r,columns=c))
     # User input for SQL query
     query = st.text_area("Enter SQL Query:", height=100)
