@@ -1,4 +1,3 @@
 env
-./company.db
-./.env
-./src/__pycache__
+.env
+company.db
