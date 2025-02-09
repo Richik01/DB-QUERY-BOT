@@ -8,7 +8,7 @@ load_dotenv()
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 def generate_query(query):
     prompt = f"""
-    You are an SQL expert. DONT MAKE INCORRECT QUERIES & return "CANNOT RETURN QUERY" if you are unsure.Convert the following natural language query into an SQL query.
+    You are an SQL expert. DONT MAKE INCORRECT QUERIES & return "CANNOT EXECUTE QUERY" if you are unsure.Convert the following natural language query into an SQL query.
     The database schema is as follows:
     
     Table: Employees
@@ -27,7 +27,7 @@ def generate_query(query):
     
     "{query}"
 
-    DONT USE attributes outside schema, if no query can be generated return "CANNOT RETURN QUERY"
+    DONT USE attributes outside schema, if no query can be generated return "CANNOT EXECUTE QUERY"
     Only return the SQL query without any explanation in a single line.
     """
     chat_completion = client.chat.completions.create(
